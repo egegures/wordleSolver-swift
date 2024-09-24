@@ -3,8 +3,6 @@
 Packages/
 Package.resolved
 
-wordleSolverTests/
-wordleSolverUITests/
 # Xcode
 *.xcworkspace
 *.xcuserdatad
