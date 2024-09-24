@@ -1,0 +1,59 @@
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+wordleSolverTests/
+wordleSolverUITests/
+# Xcode
+*.xcworkspace
+*.xcuserdatad
+*.xcuserstate
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcuserdata/*.xcuserdatad
+*.xcodeproj/xcuserdata/*.xcuserstate
+DerivedData/
+*.hmap
+
+# Build artifacts
+build/
+*.app
+*.ipa
+*.dSYM
+*.o
+*.a
+*.dll
+*.so
+*.dylib
+
+# Cocoapods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# SwiftUI previews
+*.preview
+
+# User-specific files
+*.swp
+*.swo
+*.DS_Store
+*.lock
+
+# Archives
+*.archive
+
+# Others
+*.log
+*.aux
+*.fls
+*.out
+*.toc
+
+# Ignore specific files
+# Uncomment and add specific files or folders to ignore them
+# /path/to/file_or_folder
