@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var includedLetters: String = ""
     @State var excludedLetters: String = ""
     @State var wordsCount: Int = 0
-    @State var foundWords: [String] = ["apple", "banana", "orange"]
+    @State var foundWords: [String] = []
     
     @State var box0: String = ""
     @State var box1: String = ""
