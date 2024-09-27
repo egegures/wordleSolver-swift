@@ -126,6 +126,7 @@ struct ContentView: View {
     }
     
     func readFromFile() -> [String] {
+        // TODO: Filter the list so that it contains only 5-letter words
         print("reading from file")
         guard let fileURL = Bundle.main.path(forResource: "\(selectedLanguage.localizedLowercase)_cleaned", ofType: "txt") else {
             print("failed guard")
