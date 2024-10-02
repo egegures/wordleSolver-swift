@@ -12,7 +12,9 @@ struct ContentView: View {
     @State var includedLetters: String = ""
     @State var excludedLetters: String = ""
     @State var wordsCount: Int = 0
+    
     @State var foundWords: [String] = []
+    @State var suggestedWords: [String] = []
     
     @State var box0: String = ""
     @State var box1: String = ""
@@ -37,6 +39,12 @@ struct ContentView: View {
                 foundWords = newValue.components(separatedBy: "\n").filter { !$0.isEmpty }
             }
         )
+        
+        let suggestedWordsString = Binding<String>(
+            get: { suggestedWords.joined(separator: "\n") },
+            set: { newValue in
+                suggestedWords = newValue.components(separatedBy: "\n").filter { !$0.isEmpty }
+            })
         
         VStack {
             Picker("", selection: $selectedLanguage) {
@@ -69,12 +77,23 @@ struct ContentView: View {
             
             Button(action: {
                 foundWords = filter()
+                suggestedWords = filterSuggested()
             }, label: {
                 Text("Filter Words")
             } )
-            Text("Words found: \(wordsCount)")
-            TextEditor(text: foundWordsString)
-                .frame(height: 200)
+            HStack {
+                VStack {
+                    Text("Words found: \(wordsCount)")
+                    TextEditor(text: foundWordsString)
+                        .frame(height: 200)
+                }
+                VStack {
+                    Text("Suggested words")
+                    TextEditor(text: suggestedWordsString)
+                        .frame(height: 200)
+                }
+            }
+            
             Button(action: {
                 clearFields()
             }, label: {
@@ -124,7 +143,33 @@ struct ContentView: View {
         wordsCount = list.count
         return list
     }
-    
+    func filterSuggested() -> [String] {
+        var list = readFromFile()
+        let known: [String] = [box0, box1, box2, box3, box4].filter {
+            return $0 != ""}
+        let includedLetters: [Character: [Int]] = parseIncludedLetters(input: includedLetters)
+        
+        let includedKeys = Set(includedLetters.keys)
+        let excludedLetters: [Character] = Array(excludedLetters).filter {
+            return !includedKeys.contains($0) && !known.contains(String($0))
+        }
+        var allExcluded: [Character] = []
+        
+        for c in known {
+            let char = Array(c)
+            allExcluded.append(contentsOf: char)
+        }
+        for key in includedKeys {
+            allExcluded.append(key)
+        }
+        allExcluded.append(contentsOf: excludedLetters)
+        
+        list = list.filter { word in
+            let characters = Array(word)
+            return allExcluded.allSatisfy { !Array(word).contains($0) }
+        }
+        return list
+    }
     func readFromFile() -> [String] {
         print("reading from file")
         guard let fileURL = Bundle.main.path(forResource: "\(selectedLanguage.localizedLowercase)_cleaned", ofType: "txt") else {
@@ -172,6 +217,7 @@ struct ContentView: View {
         box3 = ""
         box4 = ""
         foundWords = []
+        suggestedWords = []
         wordsCount = 0
     }
     
