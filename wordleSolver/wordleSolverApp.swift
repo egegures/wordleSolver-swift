@@ -12,6 +12,9 @@ struct wordleSolverApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onDisappear() {
+                    NSApplication.shared.terminate(nil)
+                }
         }
     }
 }

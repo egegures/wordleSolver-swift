@@ -202,7 +202,6 @@ nüydü
 çelik
 dağin
 zaden
-i̇zem
 sivas
 dancı
 guguk
@@ -1157,7 +1156,6 @@ gayet
 kahir
 yılığ
 verka
-i̇par
 elleş
 bükün
 misim
@@ -1701,7 +1699,6 @@ jigel
 kefli
 holar
 egoda
-i̇bat
 riyal
 david
 elbet
@@ -2386,7 +2383,6 @@ kahın
 mevla
 ligle
 renzi
-i̇yem
 galip
 iğime
 ohmun
@@ -5039,7 +5035,6 @@ otlar
 karim
 yonar
 volin
-i̇lig
 övmer
 pilet
 koyca
@@ -6972,7 +6967,6 @@ sırış
 üyele
 aklın
 sutça
-i̇mat
 sofan
 feyze
 amudi
@@ -7455,7 +7449,6 @@ pazın
 cevre
 taşla
 neyce
-i̇rem
 eulan
 sebil
 sunul
@@ -11236,7 +11229,6 @@ tuzdu
 koman
 korun
 hinle
-i̇ren
 anuta
 limem
 otsun
@@ -11453,7 +11445,6 @@ zeheb
 greke
 namık
 gözsü
-i̇ran
 gavur
 çamlı
 efriz
@@ -12033,7 +12024,6 @@ tekel
 duray
 aysım
 hırdı
-i̇liç
 badın
 sarız
 peyiz
@@ -12243,7 +12233,6 @@ kicim
 vıdır
 hvidt
 ferre
-i̇bad
 izahı
 semin
 lupsu
@@ -14497,7 +14486,6 @@ pıtın
 büzün
 binin
 zenli
-i̇sen
 fonun
 vusta
 yırsa
@@ -15300,7 +15288,6 @@ eleğe
 işsiz
 tabla
 sokuğ
-i̇mer
 özsan
 etiği
 duttu
@@ -16449,7 +16436,6 @@ tezse
 vıyla
 öğeni
 sezün
-i̇çöz
 çitip
 sudan
 vazla
@@ -18884,7 +18870,6 @@ histe
 isala
 ezsem
 şuura
-i̇lay
 ağlık
 tefek
 tükür
@@ -19768,7 +19753,6 @@ sühan
 fanım
 peyki
 ögemi
-i̇dil
 haraç
 sayış
 korte
@@ -22463,7 +22447,6 @@ erbin
 stoğa
 vatça
 suysa
-i̇lah
 hışla
 kaner
 geyse
@@ -25185,7 +25168,6 @@ otoma
 adaşı
 numan
 rüküş
-i̇nak
 şayan
 eğici
 yasça
@@ -25446,8 +25428,7 @@ dadım
 iznik
 odunu
 alçak
-kilci
-i̇kiz
+kilci 
 cazca
 aşıta
 ovmaç
