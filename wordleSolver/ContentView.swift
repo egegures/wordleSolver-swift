@@ -40,6 +40,7 @@ struct ContentView: View {
             }
         )
         
+        // TODO: Filter words with duplicate letters from suggested words
         let suggestedWordsString = Binding<String>(
             get: { suggestedWords.joined(separator: "\n") },
             set: { newValue in
