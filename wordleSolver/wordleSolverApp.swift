@@ -15,6 +15,11 @@ struct wordleSolverApp: App {
                 .onDisappear() {
                     NSApplication.shared.terminate(nil)
                 }
+                .onAppear() {
+                    if let window = NSApplication.shared.windows.first {
+                        window.setContentSize(NSSize(width: 400, height: 600))
+                    }
+                }
         }
     }
 }

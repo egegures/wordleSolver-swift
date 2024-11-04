@@ -22,6 +22,10 @@ struct ContentView: View {
     @State var box3: String = ""
     @State var box4: String = ""
     
+    @State var removeWord: String = ""
+    @State var isWordRemoved: Bool = false
+    @State var showMessage: Bool = false
+    
     let languages: [String] = ["Turkish", "English"]
     
     @FocusState private var focusedField: FocusField?
@@ -100,6 +104,26 @@ struct ContentView: View {
             }, label: {
                 Text("Clear fields")
             })
+            .padding(.bottom)
+            HStack {
+                TextField("", text: $removeWord)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(width: 100)
+                Button(action: {
+                    removeWordFromList()
+                }, label: {
+                    Text("Remove word")
+                })
+            }
+            if showMessage {
+                if !isWordRemoved {
+                    Text("Word is not in the list")
+                        .foregroundColor(.red)
+                } else {
+                    Text("Word removed")
+                        .foregroundColor(.green)
+                }
+            }
         }
         .padding()
     }
@@ -166,8 +190,10 @@ struct ContentView: View {
         allExcluded.append(contentsOf: excludedLetters)
         
         list = list.filter { word in
-            let characters = Array(word)
             return allExcluded.allSatisfy { !Array(word).contains($0) }
+        }
+        list = list.filter { word in
+            return word.count == Set(Array(word)).count
         }
         return list
     }
@@ -186,6 +212,23 @@ struct ContentView: View {
             print("Error reading file \(fileURL) : \(error.localizedDescription)")
             return []
         }
+    }
+    
+    func writeToFile(list: [String]) -> Bool {
+        guard let fileURL = Bundle.main.path(forResource: "\(selectedLanguage.localizedLowercase)_cleaned", ofType: "txt") else {
+                print("File path not found.")
+                return false
+            }
+            
+            let updatedContents = list.joined(separator: "\n")
+            
+            do {
+                try updatedContents.write(toFile: fileURL, atomically: true, encoding: .utf8)
+                return true
+            } catch {
+                print("Error writing to file: \(error.localizedDescription)")
+                return false
+            }
     }
     func parseIncludedLetters(input: String) -> [Character: [Int]] {
         var includedLetters: [Character: [Int]] = [:]
@@ -207,6 +250,20 @@ struct ContentView: View {
             }
         }
         return includedLetters
+    }
+    
+    func removeWordFromList() {
+        var list = readFromFile()
+        if let index = list.firstIndex(of: removeWord) {
+            list.remove(at: index)
+            isWordRemoved = writeToFile(list: list)
+        } else {
+            isWordRemoved = false
+        }
+        showMessage = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            showMessage = false
+        }
     }
     
     func clearFields() {
