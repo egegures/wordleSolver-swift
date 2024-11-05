@@ -91,11 +91,13 @@ struct ContentView: View {
                     Text("Words found: \(wordsCount)")
                     TextEditor(text: foundWordsString)
                         .frame(height: 200)
+                        .disabled(true)
                 }
                 VStack {
                     Text("Suggested words")
                     TextEditor(text: suggestedWordsString)
                         .frame(height: 200)
+                        .disabled(true)
                 }
             }
             
