@@ -96,7 +96,6 @@ struct ContentView: View {
                     Text("Suggested words")
                     TextEditor(text: .constant(suggestedWordsString.wrappedValue))
                         .frame(height: 200)
-                        .disabled(true)
                 }
             }
             
