@@ -89,13 +89,12 @@ struct ContentView: View {
             HStack {
                 VStack {
                     Text("Words found: \(wordsCount)")
-                    TextEditor(text: foundWordsString)
+                    TextEditor(text: .constant(foundWordsString.wrappedValue))
                         .frame(height: 200)
-                        .disabled(true)
                 }
                 VStack {
                     Text("Suggested words")
-                    TextEditor(text: suggestedWordsString)
+                    TextEditor(text: .constant(suggestedWordsString.wrappedValue))
                         .frame(height: 200)
                         .disabled(true)
                 }
